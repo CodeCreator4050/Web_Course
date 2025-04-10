@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout</h1>
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required pattern="[A-Za-z ]+">
+                <div class="error-message" id="fullNameError">Please enter a valid name (only alphabets allowed)</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]+" minlength="10" maxlength="12">
+                <div class="error-message" id="phoneError">Please enter a valid phone number (10-12 digits)</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Address *</label>
+                <input type="text" id="address" name="address" required>
+                <div class="error-message" id="addressError">Please enter your address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="cardNumber">Credit Card Number *</label>
+                <input type="text" id="cardNumber" name="cardNumber" required pattern="[0-9]{16}" maxlength="16">
+                <div class="error-message" id="cardNumberError">Please enter a valid 16-digit card number</div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date (MM/YYYY) *</label>
+                        <input type="text" id="expiryDate" name="expiryDate" required placeholder="MM/YYYY">
+                        <div class="error-message" id="expiryDateError">Please enter a valid future date</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="cvv">CVV *</label>
+                        <input type="text" id="cvv" name="cvv" required pattern="[0-9]{3}" maxlength="3">
+                        <div class="error-message" id="cvvError">Please enter a valid 3-digit CVV</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit">Complete Purchase</button>
+        </form>
+        
+        <div class="success-message" id="successMessage">
+            Your order has been placed successfully! Thank you for your purchase.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('checkoutForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Function to show error
+            function showError(inputElement, errorMessage) {
+                inputElement.classList.add('error');
+                const errorElement = document.getElementById(inputElement.id + 'Error');
+                errorElement.textContent = errorMessage;
+                errorElement.style.display = 'block';
+                return false;
+            }
+            
+            // Function to hide error
+            function hideError(inputElement) {
+                inputElement.classList.remove('error');
+                const errorElement = document.getElementById(inputElement.id + 'Error');
+                errorElement.style.display = 'none';
+                return true;
+            }
+            
+            // Validate full name
+            function validateFullName() {
+                const fullName = document.getElementById('fullName');
+                if (!fullName.value.trim()) {
+                    return showError(fullName, 'Full name is required');
+                }
+                if (!/^[A-Za-z ]+$/.test(fullName.value.trim())) {
+                    return showError(fullName, 'Only alphabets allowed in name');
+                }
+                return hideError(fullName);
+            }
+            
+            // Validate email
+            function validateEmail() {
+                const email = document.getElementById('email');
+                if (!email.value.trim()) {
+                    return showError(email, 'Email is required');
+                }
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email.value.trim())) {
+                    return showError(email, 'Please enter a valid email address');
+                }
+                return hideError(email);
+            }
+            
+            // Validate phone
+            function validatePhone() {
+                const phone = document.getElementById('phone');
+                if (!phone.value.trim()) {
+                    return showError(phone, 'Phone number is required');
+                }
+                if (!/^\d+$/.test(phone.value.trim())) {
+                    return showError(phone, 'Phone number should contain only digits');
+                }
+                if (phone.value.trim().length < 10 || phone.value.trim().length > 12) {
+                    return showError(phone, 'Phone number should be 10-12 digits long');
+                }
+                return hideError(phone);
+            }
+            
+            // Validate address
+            function validateAddress() {
+                const address = document.getElementById('address');
+                if (!address.value.trim()) {
+                    return showError(address, 'Address is required');
+                }
+                return hideError(address);
+            }
+            
+            // Validate card number
+            function validateCardNumber() {
+                const cardNumber = document.getElementById('cardNumber');
+                if (!cardNumber.value.trim()) {
+                    return showError(cardNumber, 'Card number is required');
+                }
+                if (!/^\d{16}$/.test(cardNumber.value.trim())) {
+                    return showError(cardNumber, 'Card number should be exactly 16 digits');
+                }
+                return hideError(cardNumber);
+            }
+            
+            // Validate expiry date
+            function validateExpiryDate() {
+                const expiryDate = document.getElementById('expiryDate');
+                if (!expiryDate.value.trim()) {
+                    return showError(expiryDate, 'Expiry date is required');
+                }
+                
+                // Check format MM/YYYY
+                const regex = /^(0[1-9]|1[0-2])\/20\d{2}$/;
+                if (!regex.test(expiryDate.value.trim())) {
+                    return showError(expiryDate, 'Expiry date should be in MM/YYYY format');
+                }
+                
+                // Check if date is in the future
+                const parts = expiryDate.value.split('/');
+                const month = parseInt(parts[0], 10);
+                const year = parseInt(parts[1], 10);
+                
+                const now = new Date();
+                const currentMonth = now.getMonth() + 1; // JavaScript months are 0-based
+                const currentYear = now.getFullYear();
+                
+                if (year < currentYear || (year === currentYear && month < currentMonth)) {
+                    return showError(expiryDate, 'Expiry date must be in the future');
+                }
+                
+                return hideError(expiryDate);
+            }
+            
+            // Validate CVV
+            function validateCVV() {
+                const cvv = document.getElementById('cvv');
+                if (!cvv.value.trim()) {
+                    return showError(cvv, 'CVV is required');
+                }
+                if (!/^\d{3}$/.test(cvv.value.trim())) {
+                    return showError(cvv, 'CVV should be exactly 3 digits');
+                }
+                return hideError(cvv);
+            }
+            
+            // Format credit card number while typing
+            document.getElementById('cardNumber').addEventListener('input', function(e) {
+                this.value = this.value.replace(/\D/g, '').substring(0, 16);
+            });
+            
+            // Format CVV while typing
+            document.getElementById('cvv').addEventListener('input', function(e) {
+                this.value = this.value.replace(/\D/g, '').substring(0, 3);
+            });
+            
+            // Format expiry date while typing
+            document.getElementById('expiryDate').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^\d\/]/g, '');
+                
+                // Auto-format MM/YYYY
+                if (this.value.length === 2 && !this.value.includes('/')) {
+                    this.value += '/';
+                }
+                
+                if (this.value.length > 7) {
+                    this.value = this.value.slice(0, 7);
+                }
+            });
+            
+            // Add input event listeners to validate in real-time
+            document.getElementById('fullName').addEventListener('input', validateFullName);
+            document.getElementById('email').addEventListener('input', validateEmail);
+            document.getElementById('phone').addEventListener('input', validatePhone);
+            document.getElementById('address').addEventListener('input', validateAddress);
+            document.getElementById('cardNumber').addEventListener('input', validateCardNumber);
+            document.getElementById('expiryDate').addEventListener('input', validateExpiryDate);
+            document.getElementById('cvv').addEventListener('input', validateCVV);
+            
+            // Form submission handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate all fields
+                const isFullNameValid = validateFullName();
+                const isEmailValid = validateEmail();
+                const isPhoneValid = validatePhone();
+                const isAddressValid = validateAddress();
+                const isCardNumberValid = validateCardNumber();
+                const isExpiryDateValid = validateExpiryDate();
+                const isCVVValid = validateCVV();
+                
+                // If all fields are valid, submit the form
+                if (isFullNameValid && isEmailValid && isPhoneValid && isAddressValid && 
+                    isCardNumberValid && isExpiryDateValid && isCVVValid) {
+                    
+                    // Hide the form and show success message
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // Reset form (for if we show it again)
+                    form.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionHub - Trendy Clothing for Everyone</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/api/placeholder/40/40" alt="FashionHub" height="30">
+                FashionHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i> Cart <span class="badge bg-primary rounded-pill">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/api/placeholder/1200/500" class="d-block w-100" alt="Summer Collection promotional banner showing models in light clothing">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Summer Collection 2025</h5>
+                    <p>Get 30% off on all summer outfits</p>
+                    <a href="#products" class="btn btn-primary">Shop Now</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/api/placeholder/1200/500" class="d-block w-100" alt="New arrivals promotional banner featuring latest fashion items">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>New Arrivals</h5>
+                    <p>Discover our latest fashion trends</p>
+                    <a href="#products" class="btn btn-primary">Explore</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/api/placeholder/1200/500" class="d-block w-100" alt="Winter special promotional banner featuring models in warm clothing">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Winter Special</h5>
+                    <p>Cozy winter wear starting at $29.99</p>
+                    <a href="#products" class="btn btn-primary">View Collection</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Product Showcase Section -->
+    <section id="products" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2>Featured Products</h2>
+                <p class="text-muted">Discover our best-selling items</p>
+            </div>
+            
+            <!-- Product Filter - New Feature -->
+            <div class="d-flex justify-content-center mb-4">
+                <div class="btn-group" role="group" aria-label="Product filter">
+                    <button type="button" class="btn btn-outline-dark active" data-filter="all">All</button>
+                    <button type="button" class="btn btn-outline-dark" data-filter="men">Men</button>
+                    <button type="button" class="btn btn-outline-dark" data-filter="women">Women</button>
+                    <button type="button" class="btn btn-outline-dark" data-filter="accessories">Accessories</button>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Product 1 -->
+                <div class="col-md-6 col-lg-3 product-item" data-category="men">
+                    <div class="card product-card h-100">
+                        <span class="deal-badge">-20%</span>
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Denim Jacket">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic Denim Jacket</h5>
+                            <p class="card-text text-muted">Perfect for any casual occasion</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="price">$49.99</span>
+                                    <small class="text-muted text-decoration-line-through ms-2">$59.99</small>
+                                </div>
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="Classic Denim Jacket" data-price="49.99" data-img="/api/placeholder/300/300">
+                                    Quick View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="col-md-6 col-lg-3 product-item" data-category="women">
+                    <div class="card product-card h-100">
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Summer Dress">
+                        <div class="card-body">
+                            <h5 class="card-title">Floral Summer Dress</h5>
+                            <p class="card-text text-muted">Light and comfortable</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$39.99</span>
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="Floral Summer Dress" data-price="39.99" data-img="/api/placeholder/300/300">
+                                    Quick View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="col-md-6 col-lg-3 product-item" data-category="men">
+                    <div class="card product-card h-100">
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Formal Shirt">
+                        <div class="card-body">
+                            <h5 class="card-title">Formal White Shirt</h5>
+                            <p class="card-text text-muted">Premium quality cotton</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$29.99</span>
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="Formal White Shirt" data-price="29.99" data-img="/api/placeholder/300/300">
+                                    Quick View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="col-md-6 col-lg-3 product-item" data-category="accessories">
+                    <div class="card product-card h-100">
+                        <span class="deal-badge">NEW</span>
+                        <img src="/api/placeholder/300/300" class="card-img-top" alt="Sneakers">
+                        <div class="card-body">
+                            <h5 class="card-title">Urban Sneakers</h5>
+                            <p class="card-text text-muted">Comfortable and stylish</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$59.99</span>
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product="Urban Sneakers" data-price="59.99" data-img="/api/placeholder/300/300">
+                                    Quick View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Accordion (Bootstrap Component) -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2>About FashionHub</h2>
+                    <p class="lead">Your one-stop shop for trendy fashion</p>
+                    <p>Founded in 2015, FashionHub has been providing high-quality, affordable fashion to customers worldwide. Our mission is to make stylish clothing accessible to everyone without compromising on quality.</p>
+                    <p>We carefully curate our collections to ensure they meet the latest fashion trends while maintaining comfort and durability.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="accordion" id="aboutAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Our Mission
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#aboutAccordion">
+                                <div class="accordion-body">
+                                    To provide affordable, high-quality fashion that empowers individuals to express their unique style.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Sustainability
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                                <div class="accordion-body">
+                                    We're committed to sustainable fashion. 30% of our materials are recycled, and we aim to increase this to 50% by 2025.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Customer Satisfaction
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                                <div class="accordion-body">
+                                    We offer a 30-day return policy and 24/7 customer support to ensure complete satisfaction with every purchase.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p class="text-muted">Get the latest updates on new products and special offers</p>
+                    <form class="mt-4 newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email address" required aria-label="Your email address">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>FashionHub</h5>
+                    <p class="text-muted">Bringing the latest fashion trends to your doorstep since 2015.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-dark me-2" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-dark me-2" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-dark me-2" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-dark me-2" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5>Shop</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Men</a></li>
+                        <li><a href="#" class="text-muted">Women</a></li>
+                        <li><a href="#" class="text-muted">Kids</a></li>
+                        <li><a href="#" class="text-muted">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5>Help</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">FAQs</a></li>
+                        <li><a href="#" class="text-muted">Shipping</a></li>
+                        <li><a href="#" class="text-muted">Returns</a></li>
+                        <li><a href="#" class="text-muted">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Fashion St, New York, NY 10001</li>
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@fashionhub.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-muted mb-0">&copy; 2025 FashionHub. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small text-muted mb-0">
+                        <a href="#" class="text-muted">Privacy Policy</a> | 
+                        <a href="#" class="text-muted">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal (Bootstrap Modal Component) -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quickViewModalLabel">Quick View</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="" alt="Product Image" class="img-fluid modal-product-img" id="modalProductImg">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="modalProductTitle"></h4>
+                            <div class="mb-3">
+                                <span class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </span>
+                                <small class="ms-2">(42 reviews)</small>
+                            </div>
+                            <h3 id="modalProductPrice" class="text-primary"></h3>
+                            <p>Availability: <span class="text-success">In Stock</span></p>
+                            <p>This stylish item is part of our newest collection. Made with high-quality materials for comfort and durability.</p>
+                            
+                            <div class="mb-3">
+                                <h6>Size:</h6>
+                                <div class="size-options">
+                                    <div class="btn-group" role="group" aria-label="Size options">
+                                        <button type="button" class="btn">S</button>
+                                        <button type="button" class="btn active">M</button>
+                                        <button type="button" class="btn">L</button>
+                                        <button type="button" class="btn">XL</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6>Quantity:</h6>
+                                <div class="input-group" style="width: 130px;">
+                                    <button class="btn btn-outline-secondary" type="button" id="decreaseQuantity">-</button>
+                                    <input type="text" class="form-control text-center" value="1" id="quantityInput">
+                                    <button class="btn btn-outline-secondary" type="button" id="increaseQuantity">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cart Modal (Bootstrap Modal Component) -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Your Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Your cart is empty.</p>
+                    <p class="text-center text-muted">Add items to your cart to see them here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" disabled>Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Bootstrap tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+            
+            // Quick View Modal
+            const quickViewModal = document.getElementById('quickViewModal');
+            if (quickViewModal) {
+                quickViewModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    const productName = button.getAttribute('data-product');
+                    const productPrice = button.getAttribute('data-price');
+                    const productImg = button.getAttribute('data-img');
+                    
+                    // Update modal content
+                    document.getElementById('modalProductTitle').textContent = productName;
+                    document.getElementById('modalProductPrice').textContent = '$' + productPrice;
+                    document.getElementById('modalProductImg').src = productImg;
+                    document.getElementById('modalProductImg').alt = productName;
+                });
+            }
+            
+            // Product quantity controls
+            const decreaseBtn = document.getElementById('decreaseQuantity');
+            const increaseBtn = document.getElementById('increaseQuantity');
+            const quantityInput = document.getElementById('quantityInput');
+            
+            if (decreaseBtn && increaseBtn && quantityInput) {
+                decreaseBtn.addEventListener('click', function() {
+                    let value = parseInt(quantityInput.value);
+                    if (value > 1) {
+                        quantityInput.value = value - 1;
+                    }
+                });
+                
+                increaseBtn.addEventListener('click', function() {
+                    let value = parseInt(quantityInput.value);
+                    quantityInput.value = value + 1;
+                });
+            }
+            
+            // Size selector
+            const sizeButtons = document.querySelectorAll('.size-options .btn');
+            sizeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    sizeButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Add to cart button
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            if (addToCartBtn) {
+                addToCartBtn
