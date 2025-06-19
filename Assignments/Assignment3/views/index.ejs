@@ -1,0 +1,95 @@
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Summer Fashion Collection 2025</h1>
+            <p>Discover the latest trends in summer fashion. From casual to elegant, find your perfect style with our exclusive collection.</p>
+            <a href="/products" class="btn">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Categories -->
+<section class="categories" id="categories">
+    <div class="container">
+        <h2 class="section-title">Featured <span>Categories</span></h2>
+        <div class="category-container">
+            <!-- Category 1 -->
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvugtd-IolR7sE04T0w5eVJYlxVeIcVn26dg&s" alt="Men's Fashion">
+                </div>
+                <div class="category-content">
+                    <h3>Men's Fashion</h3>
+                    <a href="/products" class="btn">Explore</a>
+                </div>
+            </div>
+            
+            <!-- Category 2 -->
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZqK8XxMJvLVgJnfVpvvT4H0ZvFJSjNGNkRw&s" alt="Women's Fashion">
+                </div>
+                <div class="category-content">
+                    <h3>Women's Fashion</h3>
+                    <a href="/products" class="btn">Explore</a>
+                </div>
+            </div>
+            
+            <!-- Category 3 -->
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtuWKxrU1mW-jKHoUMT2_R0mHa4e3ZQYI82A&s" alt="Kids Fashion">
+                </div>
+                <div class="category-content">
+                    <h3>Kids Fashion</h3>
+                    <a href="/products" class="btn">Explore</a>
+                </div>
+            </div>
+            
+            <!-- Category 4 -->
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvVdy--wZxos3BroTOqnGYLGjbPQlXINIvgg&s" alt="Accessories">
+                </div>
+                <div class="category-content">
+                    <h3>Accessories</h3>
+                    <a href="/products" class="btn">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="products">
+    <div class="container">
+        <h2 class="section-title">Featured <span>Products</span></h2>
+        <div class="product-container">
+            <% products.forEach(function(product) { %>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title"><%= product.name %></h3>
+                        <p class="product-category"><%= product.category %></p>
+                        <div class="product-details">
+                            <span class="product-price">$<%= product.price %></span>
+                            <button class="add-to-cart" data-product-id="<%= product.id %>">+</button>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+    <div class="container">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Stay updated with our latest arrivals and exclusive offers. Subscribe now and get 10% off on your first order!</p>
+        <a href="#" class="cta-btn">Subscribe Now</a>
+    </div>
+</section>

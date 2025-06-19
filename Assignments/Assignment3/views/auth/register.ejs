@@ -1,0 +1,95 @@
+<div class="auth-card">
+    <div class="auth-card-header">
+        <h2>Create Account</h2>
+        <p>Join StyleHub and start shopping</p>
+    </div>
+    
+    <form action="/register" method="POST" class="auth-form">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="form-control" 
+                placeholder="Enter your full name"
+                value="<%= typeof name !== 'undefined' ? name : '' %>"
+                required
+            >
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-control" 
+                placeholder="Enter your email"
+                value="<%= typeof email !== 'undefined' ? email : '' %>"
+                required
+            >
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                class="form-control" 
+                placeholder="Create a password (min. 6 characters)"
+                required
+            >
+            <small class="form-text">Password must be at least 6 characters long</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input 
+                type="password" 
+                id="password2" 
+                name="password2" 
+                class="form-control" 
+                placeholder="Confirm your password"
+                required
+            >
+        </div>
+        
+        <div class="form-group form-check">
+            <input type="checkbox" id="terms" name="terms" class="form-check-input" required>
+            <label for="terms" class="form-check-label">
+                I agree to the <a href="#" target="_blank">Terms of Service</a> and 
+                <a href="#" target="_blank">Privacy Policy</a>
+            </label>
+        </div>
+        
+        <div class="form-group form-check">
+            <input type="checkbox" id="newsletter" name="newsletter" class="form-check-input">
+            <label for="newsletter" class="form-check-label">
+                Subscribe to our newsletter for updates and offers
+            </label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+    </form>
+    
+    <div class="auth-divider">
+        <span>or</span>
+    </div>
+    
+    <div class="social-login">
+        <button class="btn btn-social btn-google">
+            <span class="social-icon">G</span>
+            Sign up with Google
+        </button>
+        <button class="btn btn-social btn-facebook">
+            <span class="social-icon">f</span>
+            Sign up with Facebook
+        </button>
+    </div>
+    
+    <div class="auth-footer">
+        <p>Already have an account? <a href="/login">Sign in here</a></p>
+    </div>
+</div>

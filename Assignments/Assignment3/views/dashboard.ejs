@@ -1,0 +1,215 @@
+<!-- Dashboard Header -->
+<section class="dashboard-header">
+    <div class="container">
+        <h1>Welcome back, <%= user.name %>!</h1>
+        <p>Manage your account and track your orders</p>
+    </div>
+</section>
+
+<!-- Dashboard Content -->
+<section class="dashboard-content">
+    <div class="container">
+        <div class="dashboard-grid">
+            <!-- Sidebar Navigation -->
+            <div class="dashboard-sidebar">
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li><a href="#overview" class="nav-link active">Overview</a></li>
+                        <li><a href="#orders" class="nav-link">My Orders</a></li>
+                        <li><a href="#profile" class="nav-link">Profile Settings</a></li>
+                        <li><a href="#addresses" class="nav-link">Addresses</a></li>
+                        <li><a href="#wishlist" class="nav-link">Wishlist</a></li>
+                        <li><a href="#support" class="nav-link">Support</a></li>
+                        <li><a href="/logout" class="nav-link logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- Main Dashboard Content -->
+            <div class="dashboard-main">
+                <!-- Overview Section -->
+                <div id="overview" class="dashboard-section active">
+                    <h2>Account Overview</h2>
+                    
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon">📦</div>
+                            <div class="stat-info">
+                                <h3>5</h3>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">💝</div>
+                            <div class="stat-info">
+                                <h3>12</h3>
+                                <p>Wishlist Items</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">💳</div>
+                            <div class="stat-info">
+                                <h3>$245.50</h3>
+                                <p>Total Spent</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">🎁</div>
+                            <div class="stat-info">
+                                <h3>150</h3>
+                                <p>Reward Points</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Orders -->
+                    <div class="recent-orders">
+                        <h3>Recent Orders</h3>
+                        <div class="orders-table">
+                            <div class="order-item">
+                                <div class="order-id">#SH2025001</div>
+                                <div class="order-date">Jan 15, 2025</div>
+                                <div class="order-status status-delivered">Delivered</div>
+                                <div class="order-total">$89.99</div>
+                                <div class="order-actions">
+                                    <button class="btn btn-sm">View Details</button>
+                                </div>
+                            </div>
+                            
+                            <div class="order-item">
+                                <div class="order-id">#SH2025002</div>
+                                <div class="order-date">Jan 10, 2025</div>
+                                <div class="order-status status-processing">Processing</div>
+                                <div class="order-total">$155.50</div>
+                                <div class="order-actions">
+                                    <button class="btn btn-sm">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Orders Section -->
+                <div id="orders" class="dashboard-section">
+                    <h2>My Orders</h2>
+                    <div class="orders-filter">
+                        <button class="filter-btn active">All Orders</button>
+                        <button class="filter-btn">Processing</button>
+                        <button class="filter-btn">Shipped</button>
+                        <button class="filter-btn">Delivered</button>
+                    </div>
+                    
+                    <div class="detailed-orders">
+                        <div class="order-card">
+                            <div class="order-header">
+                                <div class="order-info">
+                                    <h4>Order #SH2025001</h4>
+                                    <p>Placed on January 15, 2025</p>
+                                </div>
+                                <div class="order-status status-delivered">Delivered</div>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item-detail">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_LttAfEOM8sVS5XYqc5WNE7ZYbco9iJalgA&s" alt="Product">
+                                    <div class="item-info">
+                                        <h5>Premium Cotton T-Shirt</h5>
+                                        <p>Size: M, Color: Blue</p>
+                                        <p>Quantity: 1</p>
+                                    </div>
+                                    <div class="item-price">$29.99</div>
+                                </div>
+                            </div>
+                            <div class="order-total">
+                                <strong>Total: $89.99 (including shipping & tax)</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Section -->
+                <div id="profile" class="dashboard-section">
+                    <h2>Profile Settings</h2>
+                    <form class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" value="<%= user.name.split(' ')[0] %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" value="<%= user.name.split(' ')[1] || '' %>">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" value="<%= user.email %>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="birthday">Date of Birth</label>
+                            <input type="date" id="birthday" name="birthday" class="form-control">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                    
+                    <div class="password-change-section">
+                        <h3>Change Password</h3>
+                        <form class="password-form">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" name="currentPassword" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" name="newPassword" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-secondary">Update Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.dashboard-nav .nav-link');
+    const sections = document.querySelectorAll('.dashboard-section');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (!this.classList.contains('logout')) {
+                e.preventDefault();
+                
+                const target = this.getAttribute('href').substring(1);
+                
+                // Update active nav link
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show target section
+                sections.forEach(s => s.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+            }
+        });
+    });
+});
+</script>

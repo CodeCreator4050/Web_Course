@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-header">
+            <a href="/" class="logo">Style<span>Hub</span></a>
+        </div>
+        
+        <!-- Flash Messages -->
+        <% if (success_msg && success_msg.length > 0) { %>
+            <div class="flash-message success">
+                <%= success_msg %>
+            </div>
+        <% } %>
+        
+        <% if (error_msg && error_msg.length > 0) { %>
+            <div class="flash-message error">
+                <%= error_msg %>
+            </div>
+        <% } %>
+        
+        <% if (error && error.length > 0) { %>
+            <div class="flash-message error">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="flash-message error">
+                <% errors.forEach(function(error) { %>
+                    <p><%= error.msg %></p>
+                <% }); %>
+            </div>
+        <% } %>
+
+        <main class="auth-main">
+            <%- body %>
+        </main>
+        
+        <div class="auth-footer">
+            <p>&copy; 2025 StyleHub. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

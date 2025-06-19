@@ -1,0 +1,76 @@
+<!-- Products Header -->
+<section class="products-header">
+    <div class="container">
+        <h1>Our Products</h1>
+        <p>Discover our complete collection of fashion items and accessories</p>
+    </div>
+</section>
+
+<!-- Products Filter -->
+<section class="products-filter">
+    <div class="container">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Products</button>
+            <button class="filter-btn" data-filter="mens">Men's</button>
+            <button class="filter-btn" data-filter="womens">Women's</button>
+            <button class="filter-btn" data-filter="accessories">Accessories</button>
+            <button class="filter-btn" data-filter="footwear">Footwear</button>
+        </div>
+    </div>
+</section>
+
+<!-- All Products -->
+<section class="all-products">
+    <div class="container">
+        <div class="product-container">
+            <% products.forEach(function(product) { %>
+                <div class="product-card" 
+                     data-category="<%= product.category.toLowerCase().replace(/[^a-z0-9]/g, '') %>">
+                    <div class="product-img">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title"><%= product.name %></h3>
+                        <p class="product-category"><%= product.category %></p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(4.2)</span>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-price">$<%= product.price %></span>
+                            <button class="add-to-cart" data-product-id="<%= product.id %>">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<!-- Load More Section -->
+<section class="load-more">
+    <div class="container">
+        <button class="btn load-more-btn">Load More Products</button>
+    </div>
+</section>
+
+<script>
+// Add product filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            //
