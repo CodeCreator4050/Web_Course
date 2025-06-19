@@ -1,0 +1,30 @@
+<section class="container" style="padding: 60px 0; max-width:600px;">
+    <h2 class="section-title">Add Vehicle</h2>
+    <% if (error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+    <form method="POST" action="/admin/vehicles" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Brand</label>
+            <input type="text" name="brand" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Type</label>
+            <input type="text" name="type" class="form-control" required placeholder="e.g., sedan, SUV, truck" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Price</label>
+            <input type="number" name="price" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Image</label>
+            <input type="file" name="image" class="form-control" accept="image/*" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Vehicle</button>
+        <a href="/admin/vehicles" class="btn btn-secondary">Cancel</a>
+    </form>
+</section> 

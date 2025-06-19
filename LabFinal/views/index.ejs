@@ -1,0 +1,31 @@
+<section class="hero">
+    <div class="container hero-content">
+        <h1>Welcome to E-ShopLab</h1>
+        <p>Your one-stop shop for the best products online!</p>
+        <a href="/products" class="btn">Shop Now</a>
+    </div>
+</section>
+
+<section class="products">
+    <div class="container">
+        <h2 class="section-title">Featured <span>Products</span></h2>
+        <div class="product-container">
+            <% products.forEach(product => { %>
+                <div class="product-card">
+                    <div class="product-img"><!-- Add image if available --></div>
+                    <div class="product-content">
+                        <div class="product-title"><%= product.name %></div>
+                        <div class="product-category"><%= product.category %></div>
+                        <div class="product-details">
+                            <div class="product-price">$<%= product.price %></div>
+                            <form method="POST" action="/add-to-cart" style="display:inline;">
+                                <input type="hidden" name="productId" value="<%= product.id %>" />
+                                <button type="submit" class="add-to-cart">+</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section> 

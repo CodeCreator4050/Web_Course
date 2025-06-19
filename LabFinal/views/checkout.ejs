@@ -1,0 +1,25 @@
+<section class="container" style="padding: 60px 0; max-width: 600px;">
+    <h2 class="section-title">Checkout</h2>
+    <% if (message) { %>
+        <div style="color: red; margin-bottom: 10px;"><%= message %></div>
+    <% } %>
+    <h3>Order Summary</h3>
+    <ul>
+        <% cart.forEach(function(item) { %>
+            <li><%= item.title %> x <%= item.quantity %> = $<%= (item.price * item.quantity).toFixed(2) %></li>
+        <% }) %>
+    </ul>
+    <h4>Total: $<%= total.toFixed(2) %></h4>
+    <form method="POST" action="/place-order" style="margin-top:30px;">
+        <div style="margin-bottom: 15px;">
+            <input type="text" name="name" placeholder="Your Name" required class="btn" style="width: 100%; color: #333; background: #fff;" />
+        </div>
+        <div style="margin-bottom: 15px;">
+            <input type="text" name="phone" placeholder="Phone Number" required class="btn" style="width: 100%; color: #333; background: #fff;" />
+        </div>
+        <div style="margin-bottom: 15px;">
+            <input type="text" name="address" placeholder="Address" required class="btn" style="width: 100%; color: #333; background: #fff;" />
+        </div>
+        <button type="submit" class="btn">Pay Later with Cash</button>
+    </form>
+</section> 

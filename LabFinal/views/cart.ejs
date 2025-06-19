@@ -1,0 +1,46 @@
+<section class="container" style="padding: 60px 0;">
+    <h2 class="section-title">Your <span>Cart</span></h2>
+    <% if (message) { %>
+        <div style="color: red; margin-bottom: 10px;"><%= message %></div>
+    <% } %>
+    <% if (cart.length === 0) { %>
+        <p>Your cart is empty.</p>
+    <% } else { %>
+        <form method="POST" action="/update-cart">
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cart.forEach(function(item, idx) { %>
+                        <tr>
+                            <td><%= item.title %></td>
+                            <td>$<%= item.price %></td>
+                            <td><input type="number" name="quantities" value="<%= item.quantity %>" min="1" style="width:50px;" /></td>
+                            <td>$<%= (item.price * item.quantity).toFixed(2) %></td>
+                            <td>
+                                <form method="POST" action="/remove-from-cart" style="display:inline;">
+                                    <input type="hidden" name="productId" value="<%= item.productId %>" />
+                                    <button type="submit" class="btn" style="padding:2px 8px;">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            <div style="margin-top:20px;">
+                <button type="submit" class="btn">Update Cart</button>
+            </div>
+        </form>
+        <div style="margin-top:30px;">
+            <h3>Total: $<%= total.toFixed(2) %></h3>
+            <a href="/checkout" class="btn">Proceed to Checkout</a>
+        </div>
+    <% } %>
+</section> 
